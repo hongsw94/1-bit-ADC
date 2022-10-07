@@ -6,7 +6,7 @@
 - derive closed-form expressions for the achievable rate in flat fading 
 - Low SNR 
 
-### $\text{I. Introduction}$ 
+## $\text{I. Introduction}$ 
 Massive MIMO - Power consumption matters 
 
 The use of **Low Resolution(1-3bits) ADCs** is a potential solution to this problem [11]-[18]. 
@@ -18,6 +18,8 @@ Channel Estimation with 1-bit-ADC:
 - [24] - modified EM algorithm using sparsity
 - [25] - near Maximum Likelihood (nML) (Channel Estimator & detector proposed)
 - [28] - low complexity channel estimator 
+
+## $\text{II. System Model}$ 
 
 ![image](../images/fig1.png)
 
@@ -33,7 +35,7 @@ $$
 
 - $\textbf{n} \backsim \mathcal{CN} (\mathbf{0, I}_M)$
 - Channel Matrix: $\textbf{H} \in \mathbb{C}^{M \times K}$ 
-- Vectorized Channel Matrix: $\underbar{\textbf{h}} = \text{vec}(\mathbf{H})$
+- Vectorized Channel Matrix: $\underline{\textbf{h}} = \text{vec}(\mathbf{H})$
 - Assume:  $E\{|s_k|^{2}\}=1$ 
     
 all users have the same level of large-scale fading/$\textbf{SNR}$ $\rho_d$
@@ -80,9 +82,24 @@ $$
 $$
 
 
+#### A. _Bussgang-Based Channel Estimator_
 
+**channel estimation** in one-bit systems rely on 
 
- 
+1. ML algorithm (Maximum-Likelihood) 
+2. Iterative algorithms 
 
+both methods have high complexity
 
+Find an operator using Bussgang decomposition using statistical equivalence 
+
+The Bussgang decomposition is written 
+
+$$
+\mathbf{r}_p = \mathcal{Q}(\mathbf{y}_p) =\mathbf{A}_p \mathbf{y}_p + \mathbf{q}_p
+$$
+
+where $\mathbf{A}_p$ is the linear operator and $\mathbf{q}_p$ is the statistically equivalent quantizer noise. 
+
+__written till equation (6)__ 
 
