@@ -1,5 +1,5 @@
 # 1-bit-ADC
-1-bit-ADC for massive MIMO in python
+1-bit-ADC for massive MIMO paper review
 
 ## Resources 
 
