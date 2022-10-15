@@ -157,11 +157,11 @@ By substituting (8) to (7):
 
 $$
     \begin{align*}
-        \mathbf{A}_p &= \mathbf{C}^{H}_{\mathbf{y}_p \mathbf{r}_p} \mathbf{C}_{\mathbf{y}_p}^{-1}\\
-                     &= \left(\sqrt{\frac{2}{\pi}} \mathbf{C}_{\mathbf{y}_p} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}}\right)^{H} \mathbf{C}_{\mathbf{y}_p}^{-1}\\
-                     &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}} \mathbf{C}_{\mathbf{y}_p}^{H} \mathbf{C}_{\mathbf{y}_p}^{-1}\\
-                     &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}} \mathbf{C}_{\mathbf{y}_p} \mathbf{C}_{\mathbf{y}_p}^{-1} \\
-                     &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}}\\
+        \mathbf{A}_p &= \mathbf{C}^{H}_{\mathbf{y}_{p} \mathbf{r}_{p}} \mathbf{C}_{\mathbf{y}_{p}}^{-1}\\
+                     &= \left(\sqrt{\frac{2}{\pi}} \mathbf{C}_{\mathbf{y}_p} \text{diag}(\mathbf{C}_{\mathbf{y}_{p}})^{-\frac{1}{2}}\right)^{H} \mathbf{C}_{\mathbf{y}_p}^{-1}\\
+                     &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_{p}})^{-\frac{1}{2}} \mathbf{C}_{\mathbf{y}_{p}}^{H} \mathbf{C}_{\mathbf{y}_{p}}^{-1}\\
+                     &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_{p}})^{-\frac{1}{2}} \mathbf{C}_{\mathbf{y}_{p}} \mathbf{C}_{\mathbf{y}_{p}}^{-1} \\
+                     &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_{p}})^{-\frac{1}{2}}\\
                      &= \sqrt{\frac{2}{\pi}} \text{diag} \left( \left( \underline{\Phi \Phi^{H}} \otimes \rho_{p} \mathbf{I}_{M} \right) + \mathbf{I}_{M\tau} \right)^{-\frac{1}{2}} \quad (\mathbf{A} \otimes \mathbf{B})(\mathbf{C} \otimes \mathbf{D}) = (\mathbf{AC}) \otimes (\mathbf{BD})
     \end{align*}
 $$
