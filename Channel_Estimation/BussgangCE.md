@@ -156,7 +156,6 @@ Assuming $\mathbf{C}_{\underline{\mathbf{h}}}=\mathbf{I}_{MK}$ $\Longrightarrow$
 By substituting (8) to (7):
 
 $$
-% \begin{equation}
     \begin{align*}
         \mathbf{A}_p &= \mathbf{C}^{H}_{\mathbf{y}_p \mathbf{r}_p} \mathbf{C}_{\mathbf{y}_p}^{-1}\\
                      &= \left(\sqrt{\frac{2}{\pi}} \mathbf{C}_{\mathbf{y}_p} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}}\right)^{H} \mathbf{C}_{\mathbf{y}_p}^{-1}\\
@@ -165,7 +164,6 @@ $$
                      &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}}\\
                      &= \sqrt{\frac{2}{\pi}} \text{diag} \left( \left( \underline{\Phi \Phi^{H}} \otimes \rho_{p} \mathbf{I}_{M} \right) + \mathbf{I}_{M\tau} \right)^{-\frac{1}{2}} \quad (\mathbf{A} \otimes \mathbf{B})(\mathbf{C} \otimes \mathbf{D}) = (\mathbf{AC}) \otimes (\mathbf{BD})
     \end{align*}
-% \end{equation}
 $$
 
 - As you can see from the underlined $\Phi \Phi^{H}$
