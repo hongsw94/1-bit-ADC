@@ -137,14 +137,14 @@ $$
 by substituting (4) to (6), 
 
 $$
-\begin{equation}
+% \begin{equation}
     \begin{align*}
         \mathbf{r}_p &= \mathcal{Q}(\mathbf{y}_p) = \mathbf{A}_p (\overbrace{\mathbf{\bar{\Phi} \underline{h}} + \mathbf{\underline{n}}_p}^{\mathbf{y}_p}) + \mathbf{q}_p \\ 
         &= \underbrace{\mathbf{A}_p \mathbf{\bar{\Phi}}}_{\mathbf{\tilde{\Phi}}} \mathbf{\underline{h}} + 
             \underbrace{\mathbf{A}_p\mathbf{\underline{n}}_p + \mathbf{q}_p}_{\mathbf{\tilde{n}}_p}\\
         &= \mathbf{\tilde{\Phi}} \mathbf{\underline{h}} + \mathbf{\tilde{n}}_p
     \end{align*}
-\end{equation}
+% \end{equation}
 $$
 
 - $\mathbf{\tilde{\Phi}} \in \mathbb{C}^{M_\tau \times M_\tau}$ 
@@ -176,6 +176,25 @@ In order to obtain a simple expression of $\mathbf{A}_p$, pilot sequences that c
 By using the DFT pilot sequences: 
 
 1. All elements of the matrix have the same magnitude. $\rightarrow$ simple peak power constraints
-2. 
+2. The diagonal terms of $\Phi \Phi^{H}$ are always equal to $K$ 
 
+
+Thus, can be simplified as 
+$$
+\begin{equation}
+    \mathbf{A}_p = \sqrt{\frac{2}{\pi} \frac{1}{K\rho_p + 1}} \mathbf{I}_{M\tau} \triangleq \alpha_p \mathbf{I}_{M\tau}
+\end{equation}
+$$
+
+and the statistically equivalent linear model is 
+
+$$
+\begin{equation*}
+    \begin{align*}
+        \mathbf{r}_p &= \mathbf{A}_p \mathbf{\bar{\Phi}} \mathbf{\underline{h}} + \mathbf{A}_p \mathbf{\underline{n}}_p + \mathbf{q}_p\\
+        &= \alpha_p \mathbf{\bar{\Phi}} \mathbf{\underline{h}} + \alpha_p \mathbf{\underline{n}}_p + \mathbf{q}_p\\
+        &= \mathbf{\tilde{\Phi}} \mathbf{\underline{h}} + \mathbf{\tilde{n}}_p
+    \end{align*}
+\end{equation*}
+$$
 
