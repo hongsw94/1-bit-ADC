@@ -30,7 +30,9 @@ single-cell with
 - received signal at the BS 
 
 $$
+\begin{equation}
 \textbf{y} = \sqrt{\rho_{d}}\textbf{Hs} + \textbf{n}
+\end{equation}
 $$
 
 - $\textbf{n} \backsim \mathcal{CN} (\mathbf{0, I}_M)$
@@ -43,7 +45,9 @@ all users have the same level of large-scale fading/$\textbf{SNR}$ $\rho_d$
 The quantized signal obtained after the one-bit ADCs:
 
 $$
+\begin{equation}
 \textbf{r} = \mathcal{Q}(\textbf{y}) = \mathcal{Q}(\sqrt{\rho_d}\mathbf{Hs}+\mathbf{n})
+\end{equation}
 $$
 
 - $\mathcal{Q}$ represents (one-bit) Quantization function 
@@ -59,7 +63,9 @@ Coherence Interval is divided into two parts: dedicated to
 all $K$ users simultaneously transmit their pilot sequences of $\tau$ symbols each to Base station 
 
 $$
+\begin{equation}
 \textbf{Y}_p = \sqrt{\rho_p}\mathbf{H\Phi}^T + \mathbf{N}_p
+\end{equation}
 $$
 
 - $\mathbf{Y}_p \in \mathbb{C}^{M\times \tau}$ : received signal
@@ -71,14 +77,18 @@ $$
 **Change it to vector form** 
 
 $$
+\begin{equation}
 \text{vec}(\mathbf{Y}_p) = \mathbf{y}_p = \bar{\mathbf{\Phi}}\underline{\mathbf{h}} + \underline{\mathbf{n}}_p
+\end{equation}
 $$
 
 - $\bar{\mathbf{\Phi}} = \mathbf{\Phi} \otimes \sqrt{\rho_p} \mathbf{I}_M$ 
 - $\underline{\mathbf{n}}_p = \text{vec}(\mathbf{N}_p)$
 
 $$ 
+\begin{equation}
 \mathbf{r}_p = \mathcal{Q}(\mathbf{y}_p)
+\end{equation}
 $$
 
 
@@ -96,10 +106,76 @@ Find an operator using Bussgang decomposition using statistical equivalence
 The Bussgang decomposition is written 
 
 $$
+\begin{equation}
 \mathbf{r}_p = \mathcal{Q}(\mathbf{y}_p) =\mathbf{A}_p \mathbf{y}_p + \mathbf{q}_p
+\end{equation}
 $$
 
 where $\mathbf{A}_p$ is the linear operator and $\mathbf{q}_p$ is the statistically equivalent quantizer noise. 
 
-__written till equation (6)__ 
+The matrix $\mathbf{A}_p$ is chosen to make $\mathbf{q}_p$ uncorrelated with $\mathbf{y}_p$ 
+
+- equivalent to
+
+1. minimize the power of the equivalent quantizer noise which yields 
+
+$$
+\begin{equation}
+\mathbf{A}_p = \mathbf{C}^{H}_{\mathbf{y}_p \mathbf{r}_p} \mathbf{C}_{\mathbf{y}_p}^{-1}
+\end{equation}
+$$
+
+- $\mathbf{C}_{\mathbf{y}_p \mathbf{r}_p}^{H}$: [cross-correlation matrix](https://en.wikipedia.org/wiki/Cross-correlation_matrix) between $\mathbf{r}_p$ and $\mathbf{y}_p$ 
+- $\mathbf{C}_{\mathbf{y}_p}$: auto-correlation matrix of $\mathbf{y}_p$
+
+$$
+\begin{equation}
+    \mathbf{C}_{\mathbf{y}_p \mathbf{r}_p} = \sqrt{\frac{2}{\pi}} \mathbf{C}_{\mathbf{y}_p} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}} \triangleq \sqrt{\frac{2}{\pi}} \mathbf{C}_{\mathbf{y}_p} \mathbf{\Sigma}_{\mathbf{y}_p}^{-\frac{1}{2}}
+\end{equation}
+$$
+
+by substituting (4) to (6), 
+
+$$
+\begin{equation}
+    \begin{align*}
+        \mathbf{r}_p &= \mathcal{Q}(\mathbf{y}_p) = \mathbf{A}_p (\overbrace{\mathbf{\bar{\Phi} \underline{h}} + \mathbf{\underline{n}}_p}^{\mathbf{y}_p}) + \mathbf{q}_p \\ 
+        &= \underbrace{\mathbf{A}_p \mathbf{\bar{\Phi}}}_{\mathbf{\tilde{\Phi}}} \mathbf{\underline{h}} + 
+            \underbrace{\mathbf{A}_p\mathbf{\underline{n}}_p + \mathbf{q}_p}_{\mathbf{\tilde{n}}_p}\\
+        &= \mathbf{\tilde{\Phi}} \mathbf{\underline{h}} + \mathbf{\tilde{n}}_p
+    \end{align*}
+\end{equation}
+$$
+
+- $\mathbf{\tilde{\Phi}} \in \mathbb{C}^{M_\tau \times M_\tau}$ 
+- $\mathbf{\tilde{n}}_p \in \mathbb{C}^{M_\tau \times 1}$ 
+
+
+Assuming $\mathbf{C}_{\underline{\mathbf{h}}}=\mathbf{I}_{MK}$ $\Longrightarrow$ for simplicity and can be modified to include general case of the [covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix)
+
+By substituting (8) to (7):
+
+$$
+\begin{equation}
+    \begin{align*}
+        \mathbf{A}_p &= \mathbf{C}^{H}_{\mathbf{y}_p \mathbf{r}_p} \mathbf{C}_{\mathbf{y}_p}^{-1}\\
+                     &= \left(\sqrt{\frac{2}{\pi}} \mathbf{C}_{\mathbf{y}_p} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}}\right)^{H} \mathbf{C}_{\mathbf{y}_p}^{-1}\\
+                     &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}} \mathbf{C}_{\mathbf{y}_p}^{H} \mathbf{C}_{\mathbf{y}_p}^{-1}\\
+                     &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}} \mathbf{C}_{\mathbf{y}_p} \mathbf{C}_{\mathbf{y}_p}^{-1} \quad (\because \mathbf{C}_{\mathbf{y}_p}^{H} = \mathbf{C}_{\mathbf{y}_p})\\
+                     &= \sqrt{\frac{2}{\pi}} \text{diag}(\mathbf{C}_{\mathbf{y}_p})^{-\frac{1}{2}}\\
+                     &= \sqrt{\frac{2}{\pi}} \text{diag} \left( \left( \underline{\Phi \Phi^{H}} \otimes \rho_{p} \mathbf{I}_{M} \right) + \mathbf{I}_{M\tau} \right)^{-\frac{1}{2}} \quad (\mathbf{A} \otimes \mathbf{B})(\mathbf{C} \otimes \mathbf{D}) = (\mathbf{AC}) \otimes (\mathbf{BD})
+    \end{align*}
+\end{equation}
+$$
+
+- As you can see from the underlined $\Phi \Phi^{H}$
+- $\mathbf{A}_p$ depends on the choice of pilot sequences 
+  
+In order to obtain a simple expression of $\mathbf{A}_p$, pilot sequences that consist of the submatrices of the [DFT (Discrete Fourier Transform)](https://en.wikipedia.org/wiki/Discrete_Fourier_transform) will be considered [[DFT matrix](https://en.wikipedia.org/wiki/DFT_matrix)]
+
+By using the DFT pilot sequences: 
+
+1. All elements of the matrix have the same magnitude. $\rightarrow$ simple peak power constraints
+2. 
+
 
